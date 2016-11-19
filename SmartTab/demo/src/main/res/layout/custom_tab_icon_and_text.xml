@@ -13,6 +13,16 @@
     android:layout_height="0dp"
     android:layout_centerInParent="true"
     />
+  <com.ogaclejapan.smarttablayout.demo.TintableImageView
+      android:id="@+id/custom_tab_icon2"
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:layout_above="@id/center_anchor"
+      android:layout_centerHorizontal="true"
+      android:scaleType="center"
+      android:src="@drawable/icon_state_heartrate"
+      app:tint="@color/custom_tab_icon"
+      />
 
   <com.ogaclejapan.smarttablayout.demo.TintableImageView
     android:id="@+id/custom_tab_icon"
@@ -21,9 +31,20 @@
     android:layout_above="@id/center_anchor"
     android:layout_centerHorizontal="true"
     android:scaleType="center"
-    android:src="@drawable/custom_icon"
+    android:src="@drawable/icon_spo2"
     app:tint="@color/custom_tab_icon"
     />
+
+  <com.ogaclejapan.smarttablayout.demo.TintableImageView
+      android:id="@+id/custom_tab_icon3"
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:layout_above="@id/center_anchor"
+      android:layout_centerHorizontal="true"
+      android:scaleType="center"
+      android:src="@drawable/custom_icon"
+      app:tint="@color/custom_tab_icon"
+      />
 
   <TextView
     android:id="@+id/custom_tab_text"

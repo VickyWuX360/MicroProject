@@ -28,6 +28,7 @@ public class FragmentPagerItemAdapter extends FragmentPagerAdapter {
   private final FragmentPagerItems pages;
   private final SparseArrayCompat<WeakReference<Fragment>> holder;
 
+
   public FragmentPagerItemAdapter(FragmentManager fm, FragmentPagerItems pages) {
     super(fm);
     this.pages = pages;

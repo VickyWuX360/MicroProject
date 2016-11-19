@@ -26,7 +26,7 @@ public class HeartRateFragment extends Fragment {
     private View vChart;
 
     private String[][] Top10ErrCode = {{"ADFU1", "20"}, {"MBPW2", "19"}, {"ABCDE", "17"}, {"BLFU1", "16"}, {"LCVD3", "15"}, {"ADDK1", "11"}, {"CMFU3", "8"}, {"LCCR2", "7"}, {"QBLE1", "5"}, {"SPNS1", "2"}};
-    private OnFragmentInteractionListener mListener;
+//    private OnFragmentInteractionListener mListener;
 
     public HeartRateFragment() {
         // Required empty public constructor
@@ -194,7 +194,7 @@ public class HeartRateFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+//        mListener = null;
     }
 
     /**
