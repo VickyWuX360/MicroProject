@@ -3,4 +3,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="job_done">完成</string>
+    <string name="next_step">下一步</string>
+    <string name="spo2_teaching">放入手指後自動開機，戴著睡覺食指、中指、無名指皆可。</string>
+    <string name="spo2_connect">手機連結血氧機</string>
+
+
 </resources>

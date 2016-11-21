@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="statusbar">#000000</color>
+    <color name="appbar">#212121</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="accent">#40C4FF</color>
+    <color name="background">#303030</color>
+
+
+    <color name="colorText">#46A3FF</color>
+
 </resources>
