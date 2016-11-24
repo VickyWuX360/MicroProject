@@ -6,45 +6,65 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import org.achartengine.ChartFactory;
+import org.achartengine.GraphicalView;
 import org.achartengine.chart.BarChart;
+import org.achartengine.chart.PointStyle;
+import org.achartengine.model.TimeSeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
+import java.util.Date;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class HeartFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private LinearLayout llBarChart;
+    private LinearLayout llChart;
     private View vChart;
 
-    private String[][] Top10ErrCode = {{"ADFU1", "20"}, {"MBPW2", "19"}, {"ABCDE", "17"}, {"BLFU1", "16"}, {"LCVD3", "15"}, {"ADDK1", "11"}, {"CMFU3", "8"}, {"LCCR2", "7"}, {"QBLE1", "5"}, {"SPNS1", "2"}};
 
-
+    private TimeSeries series1;
+    private XYMultipleSeriesDataset dataset1;
+    private Handler handler;
+    private Random random = new Random();
+    private static final int SERIES_NR = 1;
+    private static final String TAG = "message";
+    private Timer timer = new Timer();
+    private TimerTask task;
+    private int addY = -1;
+    private long addX;
+    private GraphicalView chart;
+    /**
+     * 时间数据
+     */
+    Date[] xcache = new Date[20];
+    /**
+     * 数据
+     */
+    int[] ycache = new int[20];
     // TODO: Rename and change types of parameters
-
 
 
     public HeartFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HeartFragment.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static HeartFragment newInstance(String param1, String param2) {
         HeartFragment fragment = new HeartFragment();
@@ -72,17 +92,38 @@ public class HeartFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
 
-        llBarChart = (LinearLayout) getActivity().findViewById(R.id.llBarChart);
+        llChart = (LinearLayout) getActivity().findViewById(R.id.llChart);
 
         try {
-            vChart = getBarChart("PQC Top 10 ErrCode", "ErrCode", "QTY", Top10ErrCode);
-            llBarChart.removeAllViews();
-            //llBarChart.addView(vChart);
-            llBarChart.addView(vChart, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 300));
+//            String[][] Top10ErrCode = {{"ADFU1", "20"}, {"MBPW2", "19"}, {"ABCDE", "17"}, {"BLFU1", "16"}, {"LCVD3", "15"}, {"ADDK1", "11"}, {"CMFU3", "8"}, {"LCCR2", "7"}, {"QBLE1", "5"}, {"SPNS1", "2"}};
+//            vChart = getBarChart("PQC Top 10 ErrCode", "ErrCode", "QTY", Top10ErrCode);
+            vChart = getTrendChart();
+            llChart.removeAllViews();
+            //llChart.addView(vChart);
+            llChart.addView(vChart, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 300));
 
         } catch (Exception e) {
 
         }
+
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                //刷新图表
+                updateChart();
+                super.handleMessage(msg);
+            }
+        };
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                Message message = new Message();
+                message.what = 200;
+                handler.sendMessage(message);
+            }
+        };
+        timer.schedule(task, 2 * 1000, 1000);
+
 
     }
 
@@ -100,17 +141,6 @@ public class HeartFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
 
     private View getBarChart(String chartTitle, String XTitle, String YTitle, String[][] xy) {
 
@@ -164,5 +194,98 @@ public class HeartFragment extends Fragment {
         View view = ChartFactory.getBarChartView(getActivity(), Dataset, Renderer, BarChart.Type.DEFAULT);
         return view;
     }
+
+    private View getTrendChart() {
+        //生成图表
+        chart = ChartFactory.getTimeChartView(getActivity(), getDateDemoDataset(), getDemoRenderer(), "hh:mm:ss");
+        return chart;
+    }
+
+    private void updateChart() {
+        //设定长度为20
+        int length = series1.getItemCount();
+        if (length >= 20) length = 20;
+        addY = random.nextInt() % 10;
+        addX = new Date().getTime();
+
+        //将前面的点放入缓存
+        for (int i = 0; i < length; i++) {
+            xcache[i] = new Date((long) series1.getX(i));
+            ycache[i] = (int) series1.getY(i);
+        }
+        series1.clear();
+        series1.add(new Date(addX), addY);
+        for (int k = 0; k < length; k++) {
+            series1.add(xcache[k], ycache[k]);
+        }
+        //在数据集中添加新的点集
+        dataset1.removeSeries(series1);
+        dataset1.addSeries(series1);
+        //曲线更新
+        chart.invalidate();
+    }
+
+    private XYMultipleSeriesRenderer getDemoRenderer() {
+        XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
+
+        renderer.setChartTitle("時間曲線");//标题
+        renderer.setChartTitleTextSize(20);
+        renderer.setXTitle("Time");    //x轴说明
+        renderer.setAxisTitleTextSize(16);
+        renderer.setAxesColor(Color.WHITE);
+        renderer.setLabelsTextSize(15);    //数轴刻度字体大小
+        renderer.setLabelsColor(Color.WHITE);
+        renderer.setLegendTextSize(15);    //曲线说明
+        renderer.setXLabelsColor(Color.WHITE);
+        renderer.setYLabelsColor(0, Color.WHITE);
+        renderer.setBackgroundColor(Color.BLACK);
+        renderer.setShowLegend(false);
+//        renderer.setMargins(new int[]{20, 30, 100, 0});
+        XYSeriesRenderer r = new XYSeriesRenderer();
+        r.setColor(Color.BLUE);
+        r.setChartValuesTextSize(15);
+        r.setChartValuesSpacing(3);
+        r.setPointStyle(PointStyle.CIRCLE);
+        r.setFillBelowLine(false);
+//        r.setFillBelowLineColor(Color.WHITE);
+//        r.setFillPoints(true);
+        renderer.addSeriesRenderer(r);
+//        renderer.setMarginsColor(Color.BLACK);
+        renderer.setPanEnabled(false, false);
+        renderer.setShowGrid(true);
+        renderer.setYAxisMax(50);
+        renderer.setYAxisMin(-30);
+        renderer.setInScroll(true);  //调整大小
+        return renderer;
+    }
+
+    /**
+     * 数据对象
+     *
+     * @return
+     */
+    private XYMultipleSeriesDataset getDateDemoDataset() {
+        dataset1 = new XYMultipleSeriesDataset();
+        final int nr = 10;
+        long value = new Date().getTime();
+        Random r = new Random();
+        for (int i = 0; i < SERIES_NR; i++) {
+            series1 = new TimeSeries("Demo series " + (i + 1));
+            for (int k = 0; k < nr; k++) {
+                series1.add(new Date(value + k * 1000), 20 + r.nextInt() % 10);
+            }
+            dataset1.addSeries(series1);
+        }
+        Log.i(TAG, dataset1.toString());
+        return dataset1;
+    }
+
+    @Override
+    public void onDestroy() {
+        //当结束程序时关掉Timer
+        timer.cancel();
+        super.onDestroy();
+    };
+
 
 }
