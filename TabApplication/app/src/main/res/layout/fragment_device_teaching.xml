@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/imageView"
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_connect"
             android:layout_weight="8"
-            android:src="@drawable/login1"/>
+            android:src="@drawable/gif_no_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <TextView
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:text="@string/next_step"
             android:id="@+id/button_login1"
             android:layout_weight="18"
-            android:textSize="36sp"
+            android:textSize="@dimen/text_size_title"
             android:textColor="@drawable/text_color_button"
             android:background="@drawable/bg_button_pressed"
             android:gravity="center|center_horizontal"

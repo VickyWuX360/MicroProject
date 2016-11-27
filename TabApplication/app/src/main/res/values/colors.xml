@@ -13,6 +13,10 @@
     <color name="background">#303030</color>
 
 
-    <color name="colorText">#46A3FF</color>
+    <color name="colorText_blue">#ACD6FF</color>
+    <color name="colorText_orange">#FFBB77</color>
+    <color name="colorText_green">#DEFFAC</color>
+    <color name="colorText_yellow">#FFED97</color>
+    <color name="colorText_purple">#DAB1D5</color>
 
 </resources>

@@ -37,7 +37,7 @@
             android:textColor="@drawable/text_color_button"
             android:background="@drawable/bg_button_pressed"
             android:layout_weight="18"
-            android:textSize="36sp"
+            android:textSize="@dimen/text_size_title"
             android:gravity="center|center_horizontal"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"

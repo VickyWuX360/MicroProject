@@ -1,15 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_date"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Tab 2"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_marginTop="@dimen/margin_big"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:gravity="center"
+        android:text="日期"
+        android:textSize="@dimen/text_size_normal" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_very_small">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <TextView
+                android:text="@string/examination_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView_result"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/colorText_orange"
+                android:layout_weight="2" />
+
+            <TextView
+                android:text="@string/examination_normal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView_resultValue"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/white"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_small"
+                    android:layout_weight="1.5">
+
+                    <TextView
+                        android:text="@string/average_spo2_concentration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textColor="@color/colorText_blue"
+                        android:textSize="@dimen/text_size_small"
+                        android:id="@+id/textView_tag1"/>
+
+                    <TextView
+                        android:text="@string/spo2_low_times"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textColor="@color/colorText_green"
+                        android:textSize="@dimen/text_size_small"
+                        android:id="@+id/textView_tag2"/>
+
+                    <TextView
+                        android:text="@string/spo2_low_index"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textColor="@color/colorText_yellow"
+                        android:textSize="@dimen/text_size_small"
+                        android:id="@+id/textView_tag3"/>
+
+                    <TextView
+                        android:text="@string/total_sleep_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textColor="@color/colorText_purple"
+                        android:textSize="@dimen/text_size_small"
+                        android:id="@+id/textView_tag4"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin_small"
+                        android:layout_weight="2">
+
+                        <TextView
+                            android:text="--"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:textSize="@dimen/text_size_small"
+                            android:id="@+id/textView_value_spo2"/>
+
+                        <TextView
+                            android:text="--"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:textSize="@dimen/text_size_small"
+                            android:id="@+id/textView_value_lowtimes"/>
+
+                        <TextView
+                            android:text="--"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:textSize="@dimen/text_size_small"
+                            android:id="@+id/textView_value_lowindex"/>
+
+                        <TextView
+                            android:text="--"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:textSize="@dimen/text_size_small"
+                            android:id="@+id/textView_value_totalsleeptime"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin_small"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:text="@string/unit_percent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:id="@+id/textView_unit_spo2"/>
+
+                        <TextView
+                            android:text="@string/unit_times"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:id="@+id/textView_unit_lowtimes"/>
+
+                        <TextView
+                            android:text="@string/unit_percent_per_hour"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:id="@+id/textView_unit_lowindex"/>
+
+                        <TextView
+                            android:text="@string/unit_hour"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:id="@+id/textView_unit_totalsleeptime"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+            <TextView
+                android:text="@string/spo2_concentration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                android:id="@+id/textView_tag5"/>
+
+            <!-- 插圖進來  -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

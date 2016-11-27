@@ -6,8 +6,6 @@ import android.os.Bundle;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static int SPO2_CONNECT_STATE = 0;
-    public static int SPO2_DATA_RECEIVE_STATE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

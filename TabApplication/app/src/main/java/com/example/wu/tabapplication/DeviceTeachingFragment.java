@@ -12,10 +12,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.IOException;
+
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
+
 
 public class DeviceTeachingFragment extends Fragment {
 
     Button button_login1;
+    GifImageView gif_connect;
 
 
     @Override
@@ -28,6 +34,7 @@ public class DeviceTeachingFragment extends Fragment {
 
     public void setView() {
         button_login1 = (Button) getActivity().findViewById(R.id.button_login1);
+        gif_connect = (GifImageView) getActivity().findViewById(R.id.gif_connect);
     }
 
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -35,18 +42,28 @@ public class DeviceTeachingFragment extends Fragment {
         setHasOptionsMenu(true);
         setView();
 
+//        GifDrawable gifDrawable = null;
+//        try {
+//            gifDrawable = new GifDrawable(getResources(), R.drawable.gif_no_background);
+//            // gif1加载一个动态图gif
+//            gif_connect.setImageDrawable(gifDrawable);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+
 
         button_login1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (LoginActivity.SPO2_DATA_RECEIVE_STATE == 0) {
-                    Toast.makeText(getActivity(), "No Signal ", Toast.LENGTH_SHORT).show();
-                    LoginActivity.SPO2_DATA_RECEIVE_STATE = 1;
-                } else {
-                    LoginActivity.SPO2_DATA_RECEIVE_STATE = 1;
+//                if (LoginActivity.SPO2_DATA_RECEIVE_STATE == 0) {
+//                    Toast.makeText(getActivity(), "No Signal ", Toast.LENGTH_SHORT).show();
+//                    LoginActivity.SPO2_DATA_RECEIVE_STATE = 1;
+//                } else {
+//                    LoginActivity.SPO2_DATA_RECEIVE_STATE = 1;
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.frame_container, new DeviceConnectionFragment()).addToBackStack(null).commit();
 
-                }
+//                }
             }
         });
 

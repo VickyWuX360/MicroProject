@@ -13,6 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import org.achartengine.ChartFactory;
@@ -60,18 +63,11 @@ public class HeartFragment extends Fragment {
     // TODO: Rename and change types of parameters
 
 
+    ImageView imageView_heart;
+
+
     public HeartFragment() {
         // Required empty public constructor
-    }
-
-
-    // TODO: Rename and change types and number of parameters
-    public static HeartFragment newInstance(String param1, String param2) {
-        HeartFragment fragment = new HeartFragment();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -91,8 +87,11 @@ public class HeartFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
+        setView();
 
-        llChart = (LinearLayout) getActivity().findViewById(R.id.llChart);
+
+    /* --------------- draw chart ---------------*/
+
 
         try {
 //            String[][] Top10ErrCode = {{"ADFU1", "20"}, {"MBPW2", "19"}, {"ABCDE", "17"}, {"BLFU1", "16"}, {"LCVD3", "15"}, {"ADDK1", "11"}, {"CMFU3", "8"}, {"LCCR2", "7"}, {"QBLE1", "5"}, {"SPNS1", "2"}};
@@ -120,15 +119,23 @@ public class HeartFragment extends Fragment {
                 Message message = new Message();
                 message.what = 200;
                 handler.sendMessage(message);
+
             }
         };
         timer.schedule(task, 2 * 1000, 1000);
+    /* --------------- draw chart ---------------*/
 
+
+//
+//        Animation pulse = AnimationUtils.loadAnimation(getActivity(), R.anim.pulse);
+//        imageView_heart.startAnimation(pulse);
 
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void setView() {
+//        imageView_heart = (ImageView) getActivity().findViewById(R.id.imageView_heart);
+        llChart = (LinearLayout) getActivity().findViewById(R.id.llChart);
     }
 
     @Override
@@ -141,6 +148,8 @@ public class HeartFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
+    /* --------------- draw chart ---------------*/
 
     private View getBarChart(String chartTitle, String XTitle, String YTitle, String[][] xy) {
 
@@ -279,13 +288,17 @@ public class HeartFragment extends Fragment {
         Log.i(TAG, dataset1.toString());
         return dataset1;
     }
+    /* --------------- draw chart ---------------*/
+
 
     @Override
     public void onDestroy() {
         //当结束程序时关掉Timer
         timer.cancel();
         super.onDestroy();
-    };
+    }
+
+    ;
 
 
 }

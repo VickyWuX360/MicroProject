@@ -37,17 +37,17 @@ public class DeviceConnectionFragment extends Fragment {
         button_connect_done.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 
-                if (LoginActivity.SPO2_CONNECT_STATE == 0) {
-                    Toast.makeText(getActivity(), "No Connecion ", Toast.LENGTH_SHORT).show();
-                    LoginActivity.SPO2_CONNECT_STATE = 1;
-                } else {
-                    MainActivity.SPO2_CONNECT_STATE = 1;
+//                if (LoginActivity.SPO2_CONNECT_STATE == 0) {
+//                    Toast.makeText(getActivity(), "No Connecion ", Toast.LENGTH_SHORT).show();
+//                    LoginActivity.SPO2_CONNECT_STATE = 1;
+//                } else {
+//                    MainActivity.SPO2_CONNECT_STATE = 1;
                     Intent i = new Intent();
                     i.setClass(getActivity(), MainActivity.class);
                     startActivity(i);
                     getActivity().finish();
 
-                }
+//                }
 
 
             }
@@ -59,14 +59,6 @@ public class DeviceConnectionFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-//    // TODO: Rename and change types and number of parameters
-//    public static DeviceConnectionFragment newInstance(String param1, String param2) {
-//        DeviceConnectionFragment fragment = new DeviceConnectionFragment();
-//        Bundle args = new Bundle();
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
