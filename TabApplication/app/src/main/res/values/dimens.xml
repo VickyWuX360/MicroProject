@@ -11,6 +11,7 @@
 
     <!-- text size  -->
     <dimen name="text_size_title">36sp</dimen>
+    <dimen name="text_size_little_big">28sp</dimen>
     <dimen name="text_size_normal">22sp</dimen>
     <dimen name="text_size_small">16sp</dimen>
     <dimen name="text_size_big">50sp</dimen>

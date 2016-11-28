@@ -4,6 +4,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="fragment_heartrate">Heart Rate</string>
+    <string name="fragment_spo2">SPO2</string>
+    <string name="fragment_exercise">Exercise</string>
 
     <string name="job_done">完成</string>
     <string name="next_step">下一步</string>
@@ -28,5 +31,20 @@
     <string name="unit_times">次</string>
     <string name="unit_percent_per_hour">次數/小時</string>
     <string name="unit_hour">小時</string>
+
+    <string name="exercise_suggestion">貼心小建議：</string>
+    <string name="exercise_content">睡覺的時候讓環境保持黑暗、安靜\n睡前不喝含咖啡因的飲料或酒</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="menu_help">Help</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string-array name="drawer_menu">
+        <item>Heart Rate</item>
+        <item>SPO2</item>
+        <item>Exercise</item>
+    </string-array>
 
 </resources>

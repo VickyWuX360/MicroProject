@@ -6,27 +6,44 @@
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4">
+            android:layout_weight="4"
+            android:orientation="vertical">
             <!--report-->
-
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="6">
+            android:layout_weight="6"
+            android:gravity="center"
+            android:orientation="vertical">
             <!--chart-->
 
+            <TextView
+                android:id="@+id/textView_exercise_suggestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/exercise_suggestion"
+                android:textColor="@color/colorText_yellow"
+                android:textSize="@dimen/text_size_little_big" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/exercise_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

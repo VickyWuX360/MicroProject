@@ -70,7 +70,7 @@
                         android:gravity="right"
                         android:textColor="@color/colorText_blue"
                         android:textSize="@dimen/text_size_small"
-                        android:id="@+id/textView_tag1"/>
+                        android:id="@+id/textView_spo2_tag1"/>
 
                     <TextView
                         android:text="@string/spo2_low_times"
@@ -79,7 +79,7 @@
                         android:gravity="right"
                         android:textColor="@color/colorText_green"
                         android:textSize="@dimen/text_size_small"
-                        android:id="@+id/textView_tag2"/>
+                        android:id="@+id/textView_spo2_tag2"/>
 
                     <TextView
                         android:text="@string/spo2_low_index"
@@ -88,7 +88,7 @@
                         android:gravity="right"
                         android:textColor="@color/colorText_yellow"
                         android:textSize="@dimen/text_size_small"
-                        android:id="@+id/textView_tag3"/>
+                        android:id="@+id/textView_spo2_tag3"/>
 
                     <TextView
                         android:text="@string/total_sleep_time"
@@ -97,7 +97,7 @@
                         android:gravity="right"
                         android:textColor="@color/colorText_purple"
                         android:textSize="@dimen/text_size_small"
-                        android:id="@+id/textView_tag4"/>
+                        android:id="@+id/textView_spo2_tag4"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -199,7 +199,7 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_normal"
-                android:id="@+id/textView_tag5"/>
+                android:id="@+id/textView_spo2_tag5"/>
 
             <!-- 插圖進來  -->
         </LinearLayout>
