@@ -1,12 +1,12 @@
 package com.example.wu.tabapplication;
 
-/**
- * Created by WU on 2016/11/20.
- */
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+/**
+ * Created by WU on 2016/11/20.
+ */
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
