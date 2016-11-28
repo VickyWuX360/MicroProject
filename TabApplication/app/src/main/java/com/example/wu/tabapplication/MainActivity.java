@@ -1,16 +1,75 @@
 package com.example.wu.tabapplication;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     public static int SPO2_CONNECT_STATE = 1;
     public static int SPO2_DATA_RECEIVE_STATE = 0;
+
+    private class HttpTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            invalidateOptionsMenu();
+            Log.i("MainActivity", "AsyncTask start");
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            try {
+                URL url = new URL("http://140.115.197.16/?school=ym&app=OSA_Detector");
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setConnectTimeout(10000);
+                urlConnection.setReadTimeout(10000);
+
+                InputStream in = new BufferedInputStream((urlConnection.getInputStream()));
+                BufferedReader inReader = new BufferedReader(new InputStreamReader(in));
+
+                String strResult ="";
+                String rl = null;
+                while((rl = inReader.readLine())!= null){
+                    strResult += rl;
+                }
+
+                Log.e("strResult", strResult);
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+
+            Log.i("MainActivity", "AsyncTask completed");
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

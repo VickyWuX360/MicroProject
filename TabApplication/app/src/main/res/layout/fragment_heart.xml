@@ -14,12 +14,13 @@
         android:orientation="vertical">
 
         <!--插入動畫背景-->
-        <!--<ImageView-->
-        <!--android:id="@+id/imageView_heart"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:src="@drawable/icon_state_spo2"-->
-        <!--android:gravity="center" />-->
+        <ImageView
+            android:id="@+id/imageView_heart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:src="@drawable/zoomheart" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -67,9 +68,29 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_small"
                 android:layout_weight="1"
-                android:gravity="right|center"
+                android:gravity="center"
                 android:text="@string/average_heart_beat"
                 android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/textView_avg_heart_value"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_small"
+                android:layout_weight="1.2"
+                android:gravity="right|center"
+                android:text="--"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/textView_avg_heart2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_small"
+                android:layout_weight="1.2"
+                android:gravity="left|center"
+                android:text="@string/unit_bpm"
                 android:textSize="@dimen/text_size_normal" />
 
             <TextView
@@ -78,7 +99,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_small"
                 android:layout_weight="1"
-                android:gravity="left|center"
+                android:gravity="center"
                 android:text="@string/heart_beat_normal"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_normal" />
@@ -93,25 +114,6 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView_avg_heart_value"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_small"
-                android:layout_weight="1"
-                android:gravity="right|center"
-                android:text="--"
-                android:textSize="@dimen/text_size_normal" />
-
-            <TextView
-                android:id="@+id/textView_avg_heart2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_small"
-                android:layout_weight="1"
-                android:gravity="left|center"
-                android:text="@string/unit_bpm"
-                android:textSize="@dimen/text_size_normal" />
         </LinearLayout>
 
         <!-- 插圖表進來    -->

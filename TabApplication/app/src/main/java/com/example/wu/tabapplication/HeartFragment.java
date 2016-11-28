@@ -1,5 +1,7 @@
 package com.example.wu.tabapplication;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -62,8 +64,8 @@ public class HeartFragment extends Fragment {
     int[] ycache = new int[20];
     // TODO: Rename and change types of parameters
 
-
-    ImageView imageView_heart;
+    public Animation zoomin, zoomout; //declared as public
+    public ImageView imageView_heart;
 
 
     public HeartFragment() {
@@ -88,6 +90,11 @@ public class HeartFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
         setView();
+
+        //  animation
+        zoomin = AnimationUtils.loadAnimation(getActivity(), R.anim.zoomin);
+        zoomout = AnimationUtils.loadAnimation(getActivity(), R.anim.zoomout);
+
 
 
     /* --------------- draw chart ---------------*/
@@ -126,15 +133,51 @@ public class HeartFragment extends Fragment {
     /* --------------- draw chart ---------------*/
 
 
-//
-//        Animation pulse = AnimationUtils.loadAnimation(getActivity(), R.anim.pulse);
-//        imageView_heart.startAnimation(pulse);
+        /* ------------ animation -------------- */
+        imageView_heart.setAnimation(zoomin);
+
+        zoomin.setAnimationListener(new Animation.AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation arg0) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                imageView_heart.startAnimation(zoomout);
+            }
+        });
+        zoomout.setAnimationListener(new Animation.AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation arg0) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                imageView_heart.startAnimation(zoomin);
+
+            }
+        });
 
     }
 
+
     // TODO: Rename method, update argument and hook method into UI event
     public void setView() {
-//        imageView_heart = (ImageView) getActivity().findViewById(R.id.imageView_heart);
+        imageView_heart = (ImageView) getActivity().findViewById(R.id.imageView_heart);
         llChart = (LinearLayout) getActivity().findViewById(R.id.llChart);
     }
 
@@ -148,6 +191,7 @@ public class HeartFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
 
     /* --------------- draw chart ---------------*/
 
@@ -302,3 +346,4 @@ public class HeartFragment extends Fragment {
 
 
 }
+
