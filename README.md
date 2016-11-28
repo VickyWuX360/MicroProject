@@ -1,3 +1,3 @@
 # MicroProject
 
-Using fragments as tabs.
+Heart Rate, SPO2, Exercise
