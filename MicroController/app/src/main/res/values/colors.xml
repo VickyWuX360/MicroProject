@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="statusbar">#000000</color>
+    <color name="appbar">#212121</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="accent">#40C4FF</color>
+    <color name="background">#303030</color>
+
+
+    <color name="colorText_blue">#ACD6FF</color>
+    <color name="colorText_orange">#FFBB77</color>
+    <color name="colorText_green">#DEFFAC</color>
+    <color name="colorText_yellow">#FFED97</color>
+    <color name="colorText_purple">#DAB1D5</color>
+
+</resources>
